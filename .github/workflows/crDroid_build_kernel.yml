@@ -27,11 +27,8 @@ jobs:
           sudo bash build.sh   
           
       - name: release
-        uses: "marvinpinto/action-automatic-releases@latest"
+        uses: actions/upload-artifact@v3.1.2
         with:
-          automatic_release_tag: "${{env.KERNEL_NAME}}-${{env.BUILD_TIME}}"
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            kernel_workspace/android-kernel/out/*.zip
+          path: |
+            kernel_workspace/android-kernel/out/
 
